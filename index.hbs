@@ -1,0 +1,30 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+<link rel="stylesheet" href="{{asset 'css/home.css'}}">
+
+<header>
+  <nav>
+    <span><img src="blank.png">pollpos</span>
+    <a>articles</a>
+    <a>features</a>
+    <a>interactives</a>
+    <a>about</a>
+  </nav>
+  
+</header>
+
+<section id="article-list">
+  {{foreach "posts"}}
+    {{#unless featured}}
+      <article class="small-list">
+        <img src="blank.png">
+        <div class="tertiary">
+          <h2>Some Subtitle Text</h2>
+          <h1>The Featued Pollpos Article</h1>
+          <p><a class="author">Author One</a></p>
+        </div>
+      </article>
+    {{/unless}}
+  {{/foreach}}
+</section>

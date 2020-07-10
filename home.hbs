@@ -1,0 +1,80 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+<link rel="stylesheet" href="{{asset 'css/home.css'}}">
+<header>
+  <nav>
+    <span><img src="blank.png">pollpos</span>
+    <a>articles</a>
+    <a>features</a>
+    <a>interactives</a>
+    <a>about</a>
+  </nav>
+  {{#get "posts" filter="primary_tag:feature-one" limit="1"}}
+    {{#foreach posts}}
+      <article class="header-right header-botttom">
+        <div class="primary">
+          <h2>{{tags limit="1" from="2"}}</h2>
+          <h1>{{title}}</h1>
+          <p>
+          <a class="author">Author One</a> and <a class="author">Author Two</a></p>
+        <div>
+      </article>
+    {{/foreach}}
+  {{/get}}
+</header>
+<section id="features">
+  <aside>
+    <h3>Democratic Primary Polling Average</h3>
+    <ul>
+      <li>Biden - 29.3%</li>
+      <li>Sanders - 16.7%</li>
+      <li>Warren - 15.6%</li>
+      <li>Buttigieg - 9.1%</li>
+    </ul>
+    <img src="blank.png"></img>
+    <a>See more &gt;</a>
+  </aside>
+  {{#get "posts" filter="primary_tag:feature-two" limit="1"}}
+    {{#foreach posts}}
+      <article class="secondary nested-horizontal">
+        <h2>{{tags limit="1" from="2"}}</h2>
+        <h1>{{title}}</h1>
+        <p><a class="author">Author One</a></p>
+      </article>
+    {{/foreach}}
+  {{/get}}
+  {{#get "posts" filter="primary_tag:feature-three" limit="1"}}
+    {{#foreach posts}}
+      <article class="secondary horizontal">
+        <img src="blank.png">
+        <h2>{{tags limit="1" from="2"}}</h2>
+        <h1>{{title}}</h1>
+        <p><a class="author">Author One</a></p>
+      </article>
+    {{/foreach}}
+  {{/get}}
+  {{#get "posts" filter="primary_tag:feature-four" limit="1"}}
+    {{#foreach posts}}
+      <article class="tertiary nested-vertical">
+        <h2>{{tags limit="1" from="2"}}</h2>
+        <h1>{{title}}</h1>
+        <p><a class="author">Author One</a></p>
+      </article>
+    {{/foreach}}
+  {{/get}}
+</section>
+<section id="article-list">
+  {{foreach "posts"}}
+    {{#unless featured}}
+      <article class="small-list">
+        <img src="blank.png">
+        <div class="tertiary">
+          <h2>Some Subtitle Text</h2>
+          <h1>The Featued Pollpos Article</h1>
+          <p><a class="author">Author One</a></p>
+        </div>
+      </article>
+    {{/unless}}
+  {{/foreach}}
+</section>
